@@ -1,25 +1,33 @@
-import Header from './components/Header';
-import Hero from './components/Hero';
-import AboutUs from './components/about/AboutUs';
-import Services from './components/Services';
-import FleetShowcase from './components/fleet/FleetShowcase';
-import TouristSites from './components/TouristSites';
-import BookingForm from './components/BookingForm';
-import Footer from './components/Footer';
+import { Suspense, lazy } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import LoadingSpinner from './components/common/LoadingSpinner';
+
+// Lazy load pages
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Services = lazy(() => import('./pages/Services'));
+const Fleet = lazy(() => import('./pages/Fleet'));
+const TouristSites = lazy(() => import('./pages/TouristSites'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Booking = lazy(() => import('./pages/Booking'));
 
 export default function App() {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <Hero />
-        <AboutUs />
-        <Services />
-        <FleetShowcase />
-        <TouristSites />
-        <BookingForm />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/fleet" element={<Fleet />} />
+            <Route path="/tourist-sites" element={<TouristSites />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/booking" element={<Booking />} />
+          </Routes>
+        </Suspense>
+      </Layout>
+    </BrowserRouter>
   );
 }

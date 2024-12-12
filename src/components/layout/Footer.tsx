@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
             <div className="space-y-3">
               <p className="flex items-center">
                 <Phone className="h-5 w-5 mr-2" />
-                <a href="tel:+233123456789" className="hover:text-blue-400">+233 12 345 6789</a>
+                <a href="tel:+233276776610" className="hover:text-blue-400">+233 27 677 6610</a>
               </p>
               <p className="flex items-center">
                 <Mail className="h-5 w-5 mr-2" />
@@ -26,10 +27,10 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#about" className="hover:text-blue-400">About Us</a></li>
-              <li><a href="#services" className="hover:text-blue-400">Services</a></li>
-              <li><a href="#tourist-sites" className="hover:text-blue-400">Tourist Sites</a></li>
-              <li><a href="#booking" className="hover:text-blue-400">Book a Ride</a></li>
+              <li><Link to="/about" className="hover:text-blue-400">About Us</Link></li>
+              <li><Link to="/services" className="hover:text-blue-400">Services</Link></li>
+              <li><Link to="/tourist-sites" className="hover:text-blue-400">Tourist Sites</Link></li>
+              <li><Link to="/booking" className="hover:text-blue-400">Book a Ride</Link></li>
             </ul>
           </div>
           
@@ -48,11 +49,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <p><a href="mailto:obengebenezer01@gmail.com">Developed By Isaac Obeng</a></p>
+        
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-          <p>&copy; {new Date().getFullYear()} Ed Car Rental. All rights reserved.
-          
-          </p>
+          <p>&copy; {new Date().getFullYear()} Ed Car Rental. All rights reserved.</p>
         </div>
       </div>
     </footer>
