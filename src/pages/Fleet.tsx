@@ -2,25 +2,17 @@ import { useState } from 'react';
 import { useVehicles } from '../hooks/useVehicles';
 import VehicleCard from '../components/vehicles/VehicleCard';
 import LoadingSpinner from '../components/common/LoadingSpinner';
-import { SearchBar } from '../components/fleet/Searchbar'; // Adjust the import path as needed
 import type { VehicleType } from '../types';
 
 export default function Fleet() {
   const { vehicles, loading, error } = useVehicles();
   const [selectedType, setSelectedType] = useState<VehicleType | 'all'>('all');
-  const [searchQuery, setSearchQuery] = useState('');
 
   const vehicleTypes: (VehicleType | 'all')[] = ['all', 'SUV', 'Van', 'Mini-Bus', 'Compact', 'Sedan', 'Luxury', 'Pickup'];
 
-  // Filter vehicles by type
-  const filteredByType = selectedType === 'all'
+  const filteredVehicles = selectedType === 'all'
     ? vehicles
-    : vehicles.filter((vehicle) => vehicle.type === selectedType);
-
-  // Further filter by search query
-  const filteredVehicles = filteredByType.filter((vehicle) =>
-    vehicle.name.toLowerCase().includes(searchQuery.toLowerCase()) // Assuming vehicles have a `name` property
-  );
+    : vehicles.filter(vehicle => vehicle.type === selectedType);
 
   if (error) {
     return (
@@ -49,8 +41,7 @@ export default function Fleet() {
       {/* Filter Section */}
       <div className="bg-white shadow-md">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-wrap gap-4 justify-center">
-            {/* Vehicle Type Filters */}
+          <div className="flex flex-wrap gap-2 justify-center">
             {vehicleTypes.map((type) => (
               <button
                 key={type}
@@ -64,10 +55,6 @@ export default function Fleet() {
                 {type === 'all' ? 'All Vehicles' : type}
               </button>
             ))}
-
-            {/* Search Bar */}
-            <SearchBar value={searchQuery} onChange={setSearchQuery}
-            placeholder="Search vehicles..."  />
           </div>
         </div>
       </div>
@@ -79,15 +66,9 @@ export default function Fleet() {
             <LoadingSpinner />
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {filteredVehicles.length > 0 ? (
-                filteredVehicles.map((vehicle) => (
-                  <VehicleCard key={vehicle.id} vehicle={vehicle} />
-                ))
-              ) : (
-                <div className="text-center col-span-full text-gray-600">
-                  No vehicles match your search criteria.
-                </div>
-              )}
+              {filteredVehicles.map((vehicle) => (
+                <VehicleCard key={vehicle.id} vehicle={vehicle} />
+              ))}
             </div>
           )}
         </div>

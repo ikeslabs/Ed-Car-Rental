@@ -35,7 +35,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
           </div>
         </div>
         <Link
-          to="/booking"
+          to={`/booking?vehicle=${vehicle.id}`}
           className="inline-block w-full bg-blue-600 text-white text-center px-6 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
         >
           Request This Car

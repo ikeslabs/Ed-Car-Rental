@@ -14,7 +14,7 @@ export const vehicles: Vehicle[] = [
     name: "Toyota HiAce",
     type: "Van",
     description: "Spacious van ideal for group travel and airport transfers",
-   image: "https://images.unsplash.com/photo-1650807486050-a142ea418b19?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://images.unsplash.com/photo-1609520778163-a16fb3b9d028?auto=format&fit=crop&q=80&w=1000",
     features: ["Air conditioning", "15 seats", "Luggage space", "Manual"]
   },
   {
@@ -62,7 +62,7 @@ export const vehicles: Vehicle[] = [
     name: "Hyundai Tucson",
     type: "SUV",
     description: "Modern SUV combining comfort and versatility",
-    image:"https://images.unsplash.com/photo-1704940225548-1420f7fed72f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://images.unsplash.com/photo-1633859947224-8a6f38e1c7dd?auto=format&fit=crop&q=80&w=1000",
     features: ["Air conditioning", "5 seats", "Automatic", "Backup camera", "Bluetooth"]
   }
 ];

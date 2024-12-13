@@ -48,11 +48,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <p><a href="mailto:obengebenezer01@gmail.com">Developed By Isaac Obeng</a></p>
+        
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-          <p>&copy; {new Date().getFullYear()} Ed Car Rental. All rights reserved.
-          
-          </p>
+          <p>&copy; {new Date().getFullYear()} Ed Car Rental. All rights reserved.</p>
         </div>
       </div>
     </footer>

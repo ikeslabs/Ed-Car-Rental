@@ -1,7 +1,18 @@
 import { useState } from 'react';
 import type { BookingFormData } from '../types';
+import BookingTypeSelector from '../components/booking/BookingTypeSelector';
+import VehicleSelector from '../components/booking/VehicleSelector';
+import TouristSiteSelector from '../components/booking/TouristSiteSelector';
+import { useVehicles } from '../hooks/useVehicles';
+import { useTouristSites } from '../hooks/useTouristSites';
 
 export default function Booking() {
+  const [bookingType, setBookingType] = useState<'vehicle' | 'tourist-site'>('vehicle');
+  const [selectedVehicle, setSelectedVehicle] = useState('');
+  const [selectedSite, setSelectedSite] = useState('');
+  const { vehicles } = useVehicles();
+  const { sites } = useTouristSites();
+  
   const [formData, setFormData] = useState<BookingFormData>({
     name: '',
     phone: '',
@@ -13,7 +24,21 @@ export default function Booking() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Hello Ed Car Rental, I want to book a ride:\n\nName: ${formData.name}\nPhone: ${formData.phone}\nPickup: ${formData.pickup}\nDrop-off: ${formData.dropoff}\nDate: ${formData.date}\nTime: ${formData.time}`;
+    
+    let selectedDetails = '';
+    if (bookingType === 'vehicle' && selectedVehicle) {
+      const vehicle = vehicles.find(v => v.id.toString() === selectedVehicle);
+      if (vehicle) {
+        selectedDetails = `\nSelected Vehicle: ${vehicle.name} (${vehicle.type})`;
+      }
+    } else if (bookingType === 'tourist-site' && selectedSite) {
+      const site = sites.find(s => s.id.toString() === selectedSite);
+      if (site) {
+        selectedDetails = `\nSelected Destination: ${site.name}`;
+      }
+    }
+
+    const message = `Hello Ed Car Rental, I want to book a ride:${selectedDetails}\n\nName: ${formData.name}\nPhone: ${formData.phone}\nPickup: ${formData.pickup}\nDrop-off: ${formData.dropoff}\nDate: ${formData.date}\nTime: ${formData.time}`;
     window.open(`https://wa.me/233276776610?text=${encodeURIComponent(message)}`, "_blank");
   };
 
@@ -34,6 +59,20 @@ export default function Booking() {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
             <form onSubmit={handleSubmit} className="space-y-6">
+              <BookingTypeSelector onTypeChange={setBookingType} />
+              
+              {bookingType === 'vehicle' ? (
+                <VehicleSelector
+                  selectedVehicle={selectedVehicle}
+                  onVehicleChange={setSelectedVehicle}
+                />
+              ) : (
+                <TouristSiteSelector
+                  selectedSite={selectedSite}
+                  onSiteChange={setSelectedSite}
+                />
+              )}
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
                 <input

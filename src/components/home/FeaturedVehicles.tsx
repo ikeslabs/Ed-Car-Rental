@@ -31,7 +31,7 @@ export default function FeaturedVehicles() {
         {loading ? (
           <LoadingSpinner />
         ) : (
-          <div className="grid md:grid-cols-3  gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredVehicles.map((vehicle) => (
               <VehicleCard key={vehicle.id} vehicle={vehicle} />
             ))}

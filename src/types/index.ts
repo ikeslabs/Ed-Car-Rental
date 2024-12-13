@@ -24,4 +24,10 @@ export interface Vehicle {
   features: string[];
 }
 
+export interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 export type VehicleType = 'SUV' | 'Van' | 'Mini-Bus' | 'Compact' | 'Sedan' | 'Luxury' | 'Pickup';
