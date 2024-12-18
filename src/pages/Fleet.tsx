@@ -65,7 +65,7 @@ export default function Fleet() {
           {loading ? (
             <LoadingSpinner />
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {filteredVehicles.map((vehicle) => (
                 <VehicleCard key={vehicle.id} vehicle={vehicle} />
               ))}

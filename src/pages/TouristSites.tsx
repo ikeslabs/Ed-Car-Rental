@@ -35,7 +35,7 @@ export default function TouristSites() {
           {loading ? (
             <LoadingSpinner />
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {sites.map((site) => (
                 <TouristSiteCard key={site.id} site={site} />
               ))}

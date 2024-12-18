@@ -7,7 +7,7 @@ interface TouristSiteCardProps {
 
 export default function TouristSiteCard({ site }: TouristSiteCardProps) {
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
       <img
         src={site.image}
         alt={site.name}
@@ -16,12 +16,14 @@ export default function TouristSiteCard({ site }: TouristSiteCardProps) {
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-2">{site.name}</h3>
         <p className="text-gray-600 mb-4">{site.description}</p>
+        <div className="text-center">
         <Link
           to="/booking"
-          className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
+          className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
         >
           Book a Ride
         </Link>
+        </div>
       </div>
     </div>
   );
