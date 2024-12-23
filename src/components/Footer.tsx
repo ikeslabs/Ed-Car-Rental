@@ -9,9 +9,16 @@ export default function Footer() {
             <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
             <div className="space-y-3">
               <p className="flex items-center">
-                <Phone className="h-5 w-5 mr-2" />
-                <a href="tel:+233123456789" className="hover:text-blue-400">+233 12 345 6789</a>
-              </p>
+              <Phone className="h-5 w-5 mr-2" />
+          <a
+            href="https://wa.me/233123456789"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-400"
+          >
+            +233 12 345 6789
+          </a>
+        </p>
               <p className="flex items-center">
                 <Mail className="h-5 w-5 mr-2" />
                 <a href="mailto:info@edcarrental.com" className="hover:text-blue-400">info@edcarrental.com</a>

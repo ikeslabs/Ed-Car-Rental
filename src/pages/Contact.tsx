@@ -38,7 +38,12 @@ export default function Contact() {
                 <Phone className="h-6 w-6 text-blue-600" />
                 <div>
                   <h3 className="font-semibold">Phone</h3>
-                  <p><a href="tel:+233276776610" className="text-blue-600 hover:text-blue-700">+233 27 677 6610</a></p>
+                  <p> <a
+            href="https://wa.me/233123456789"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-400"
+          >+233 27 677 6610</a></p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
