@@ -1,14 +1,32 @@
-import { useState } from 'react';
-import { useVehicles } from '../hooks/useVehicles';
+import { useState, useEffect } from 'react';
+import { fetchVehicles } from '../services/firebase';
 import VehicleCard from '../components/vehicles/VehicleCard';
 import LoadingSpinner from '../components/common/LoadingSpinner';
-import type { VehicleType } from '../types';
+import type { Vehicle, VehicleType } from '../types';
 
 export default function Fleet() {
-  const { vehicles, loading, error } = useVehicles();
+  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<VehicleType | 'all'>('all');
 
   const vehicleTypes: (VehicleType | 'all')[] = ['all', 'SUV', 'Van', 'Mini-Bus', 'Compact', 'Sedan', 'Luxury', 'Pickup'];
+
+  useEffect(() => {
+    const loadVehicles = async () => {
+      try {
+        const data = await fetchVehicles();
+        setVehicles(data);
+      } catch (err) {
+        setError('Error loading vehicles. Please try again later.');
+        console.error('Error fetching vehicles:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadVehicles();
+  }, []);
 
   const filteredVehicles = selectedType === 'all'
     ? vehicles

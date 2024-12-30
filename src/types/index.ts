@@ -1,8 +1,9 @@
 export interface TouristSite {
-  id: number;
+  id: string;
   name: string;
   description: string;
   image: string;
+  location: string;
 }
 
 export interface BookingFormData {
@@ -16,11 +17,13 @@ export interface BookingFormData {
 }
 
 export interface Vehicle {
-  id: number;
+  id: string;
   name: string;
-  type: VehicleType;
   description: string;
   image: string;
+  capacity: number;
+  price: number;
+  type: VehicleType;
   features: string[];
 }
 
@@ -31,3 +34,10 @@ export interface ContactFormData {
 }
 
 export type VehicleType = 'SUV' | 'Van' | 'Mini-Bus' | 'Compact' | 'Sedan' | 'Luxury' | 'Pickup';
+
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+}

@@ -1,6 +1,28 @@
-import { touristSites } from '../data/touristSites';
+import { useEffect, useState } from 'react';
+import { fetchTouristSites } from '../services/firebase';
+import { TouristSite } from '../types';
 
 export default function TouristSites() {
+  const [sites, setSites] = useState<TouristSite[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadSites = async () => {
+      try {
+        const data = await fetchTouristSites();
+        setSites(data);
+      } catch (error) {
+        console.error('Error fetching tourist sites:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadSites();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+
   return (
     <section id="tourist-sites" className="py-20">
       <div className="container mx-auto px-4">
@@ -10,7 +32,7 @@ export default function TouristSites() {
           From breathtaking landscapes to rich cultural landmarks, your adventure starts here!
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {touristSites.map((site) => (
+          {sites.map((site) => (
             <div key={site.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               <img
                 src={site.image}
