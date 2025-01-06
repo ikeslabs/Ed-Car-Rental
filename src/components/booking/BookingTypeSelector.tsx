@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 interface BookingTypeSelectorProps {
   onTypeChange: (type: 'vehicle' | 'tourist-site') => void;
+  currentType: 'vehicle' | 'tourist-site';
 }
 
 export default function BookingTypeSelector({ onTypeChange }: BookingTypeSelectorProps) {

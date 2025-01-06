@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { fetchTouristSites } from '../services/firebase';
 import { TouristSite } from '../types';
+import { useNavigate } from 'react-router-dom';
 
 export default function TouristSites() {
   const [sites, setSites] = useState<TouristSite[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadSites = async () => {
@@ -20,6 +22,16 @@ export default function TouristSites() {
 
     loadSites();
   }, []);
+
+  const handleBooking = (site: TouristSite) => {
+    navigate('/booking', {
+      state: { 
+        bookingType: 'tourist-site',
+        selectedSite: site.id,
+        siteName: site.name
+      }
+    });
+  };
 
   if (loading) return <div>Loading...</div>;
 
@@ -42,12 +54,12 @@ export default function TouristSites() {
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">{site.name}</h3>
                 <p className="text-gray-600 mb-4">{site.description}</p>
-                <a
-                  href="#booking"
+                <button
+                  onClick={() => handleBooking(site)}
                   className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
                 >
                   Book a Ride
-                </a>
+                </button>
               </div>
             </div>
           ))}

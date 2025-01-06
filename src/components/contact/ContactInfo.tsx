@@ -11,7 +11,7 @@ export default function ContactInfo() {
           <div>
             <h3 className="font-semibold">Phone</h3>
             <p>
-              <a href="tel:+233276776610" className="text-blue-600 hover:text-blue-700">
+              <a href="tel:+233244378724" className="text-blue-600 hover:text-blue-700">
                 +233 27 677 6610
               </a>
             </p>

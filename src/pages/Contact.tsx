@@ -15,7 +15,7 @@ export default function Contact() {
 
     toast.promise(
       new Promise((resolve) => {
-        window.open(`https://wa.me/233276776610?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+        window.open(`https://wa.me/233244378724?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
         setTimeout(resolve, 1000);
       }),
       {

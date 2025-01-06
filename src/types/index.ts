@@ -3,7 +3,7 @@ export interface TouristSite {
   name: string;
   description: string;
   image: string;
-  location: string;
+  location?: string;
 }
 
 export interface BookingFormData {
@@ -40,4 +40,21 @@ export interface Service {
   title: string;
   description: string;
   image: string;
+}
+
+export interface SpotCategory {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  link?: string;
+  type: 'hotel' | 'beach' | 'studio' | 'nightclub' | 'restaurant';
+  rating?: number;
+  location?: string;
+}
+
+export interface CategorySection {
+  title: string;
+  type: SpotCategory['type'];
+  description: string;
 }

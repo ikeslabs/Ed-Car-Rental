@@ -1,6 +1,6 @@
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../config/firebase';
-import { TouristSite, Service, Vehicle } from '../types';
+import { TouristSite, Service, Vehicle, SpotCategory } from '../types';
 
 export const fetchTouristSites = async (): Promise<TouristSite[]> => {
   const sitesCollection = collection(db, 'touristSites');
@@ -18,4 +18,11 @@ export const fetchVehicles = async (): Promise<Vehicle[]> => {
   const vehiclesCollection = collection(db, 'vehicles');
   const vehiclesSnapshot = await getDocs(vehiclesCollection);
   return vehiclesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Vehicle));
+};
+
+export const fetchSpotsByCategory = async (category: SpotCategory['type']): Promise<SpotCategory[]> => {
+  const spotsCollection = collection(db, 'spots');
+  const spotsQuery = query(spotsCollection, where('type', '==', category));
+  const spotsSnapshot = await getDocs(spotsQuery);
+  return spotsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as SpotCategory));
 }; 

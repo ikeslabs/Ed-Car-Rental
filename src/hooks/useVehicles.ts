@@ -14,7 +14,7 @@ export function useVehicles() {
         await new Promise(resolve => setTimeout(resolve, 1000));
         setVehicles(vehicleData);
         setLoading(false);
-      } catch (err) {
+      } catch{
         setError('Failed to load vehicles');
         setLoading(false);
       }

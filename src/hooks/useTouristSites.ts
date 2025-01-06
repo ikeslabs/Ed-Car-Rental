@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { TouristSite } from '../types';
-import { touristSites as sitesData } from '../data/touristSites';
+// import { touristSites as sitesData } from '../data/touristSites';
 
 export function useTouristSites() {
   const [sites, setSites] = useState<TouristSite[]>([]);
@@ -12,9 +12,14 @@ export function useTouristSites() {
       try {
         // Simulate API call delay
         await new Promise(resolve => setTimeout(resolve, 1000));
-        setSites(sitesData);
+        const sitesData = await import('../data/touristSites').then(module => module.touristSites);
+        const formattedSitesData = sitesData.map(site => ({
+          ...site,
+          id: site.id.toString()
+        }));
+        setSites(formattedSitesData);
         setLoading(false);
-      } catch (err) {
+      } catch {
         setError('Failed to load tourist sites');
         setLoading(false);
       }
