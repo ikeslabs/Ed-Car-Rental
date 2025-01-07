@@ -1,10 +1,31 @@
-import { useTouristSites } from '../../hooks/useTouristSites';
+import { useState, useEffect } from 'react';
+import { fetchTouristSites } from '../../services/firebase';
 import TouristSiteCard from '../tourist-sites/TouristSiteCard';
 import LoadingSpinner from '../common/LoadingSpinner';
 import { Link } from 'react-router-dom';
+import type { TouristSite } from '../../types';
 
 export default function PopularDestinations() {
-  const { sites, loading, error } = useTouristSites();
+  const [sites, setSites] = useState<TouristSite[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadSites = async () => {
+      try {
+        const data = await fetchTouristSites();
+        setSites(data);
+      } catch (err) {
+        setError('Error loading destinations. Please try again later.');
+        console.error('Error fetching tourist sites:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadSites();
+  }, []);
+
   const popularSites = sites.slice(0, 3); // Show only first 3 sites
 
   if (error) {

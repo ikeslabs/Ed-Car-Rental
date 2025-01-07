@@ -11,6 +11,7 @@ const Fleet = lazy(() => import('./pages/Fleet'));
 const TouristSites = lazy(() => import('./pages/TouristSites'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Booking = lazy(() => import('./pages/Booking'));
+const ExploreBestSpots = lazy(() => import('./pages/ExploreBestSpots'));
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
             <Route path="/tourist-sites" element={<TouristSites />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/booking" element={<Booking />} />
+            <Route path="/explore" element={<ExploreBestSpots />} />
           </Routes>
         </Suspense>
       </Layout>

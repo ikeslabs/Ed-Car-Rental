@@ -1,19 +1,29 @@
-import { useVehicles } from '../../hooks/useVehicles';
+import { useEffect, useState } from 'react';
+import { fetchVehicles } from '../../services/firebase';
+import { Vehicle } from '../../types';
 import VehicleCard from '../vehicles/VehicleCard';
-import LoadingSpinner from '../common/LoadingSpinner';
 import { Link } from 'react-router-dom';
 
 export default function FeaturedVehicles() {
-  const { vehicles, loading, error } = useVehicles();
-  const featuredVehicles = vehicles.slice(0, 4); // Show only first 4 vehicles
+  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  if (error) {
-    return (
-      <div className="text-center text-red-600 py-20">
-        {error}
-      </div>
-    );
-  }
+  useEffect(() => {
+    const loadVehicles = async () => {
+      try {
+        const data = await fetchVehicles();
+        setVehicles(data);
+      } catch (error) {
+        console.error('Error fetching vehicles:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadVehicles();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <section className="py-20 bg-white">
@@ -28,15 +38,11 @@ export default function FeaturedVehicles() {
           </Link>
         </div>
 
-        {loading ? (
-          <LoadingSpinner />
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {featuredVehicles.map((vehicle) => (
-              <VehicleCard key={vehicle.id} vehicle={vehicle} />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {vehicles.slice(0, 4).map((vehicle) => (
+            <VehicleCard key={vehicle.id} vehicle={vehicle} />
+          ))}
+        </div>
       </div>
     </section>
   );

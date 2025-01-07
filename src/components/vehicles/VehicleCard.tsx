@@ -24,7 +24,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
         <div className="mb-4">
           <h4 className="text-sm font-semibold text-gray-700 mb-2">Features:</h4>
           <div className="flex flex-wrap gap-2">
-            {vehicle.features.map((feature, index) => (
+            {vehicle.features.map((feature: string, index: number) => (
               <span
                 key={index}
                 className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"
