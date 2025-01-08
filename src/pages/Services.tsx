@@ -145,7 +145,7 @@ const Modal = ({
           Email
         </a>
         <a
-          href="https://wa.me/233123456789"
+          href="https://wa.me/233244378724"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"

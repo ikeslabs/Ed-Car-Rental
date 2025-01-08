@@ -43,7 +43,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-400"
-          >+233 27 677 6610</a></p>
+          >+233244378724</a></p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
