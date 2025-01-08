@@ -16,7 +16,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="hover:text-blue-400"
           >
-            +233 12 345 6789
+            +233244378724
           </a>
         </p>
               <p className="flex items-center">
