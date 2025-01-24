@@ -61,12 +61,7 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-            <div className="mt-8">
-              <h3 className="font-semibold mb-2">Business Hours</h3>
-              <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-              <p>Saturday: 9:00 AM - 4:00 PM</p>
-              <p>Sunday: Closed</p>
-            </div>
+            
           </div>
           <div className="bg-white p-8 rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold mb-6">Send us a Message</h2>

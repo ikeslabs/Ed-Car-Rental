@@ -1,17 +1,15 @@
-import { Suspense, lazy } from 'react';
+import { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import LoadingSpinner from './components/common/LoadingSpinner';
-
-// Lazy load pages
-const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('./pages/About'));
-const Services = lazy(() => import('./pages/Services'));
-const Fleet = lazy(() => import('./pages/Fleet'));
-const TouristSites = lazy(() => import('./pages/TouristSites'));
-const Contact = lazy(() => import('./pages/Contact'));
-const Booking = lazy(() => import('./pages/Booking'));
-const ExploreBestSpots = lazy(() => import('./pages/ExploreBestSpots'));
+import Home from './pages/Home';
+import Fleet from './pages/Fleet';
+import Explore from './pages/Explore';
+import TouristSites from './pages/TouristSites';
+import About from './pages/About';
+import Services from './pages/Services';
+import Contact from './pages/Contact';
+import Booking from './pages/Booking';
 
 export default function App() {
   return (
@@ -26,7 +24,7 @@ export default function App() {
             <Route path="/tourist-sites" element={<TouristSites />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/booking" element={<Booking />} />
-            <Route path="/explore" element={<ExploreBestSpots />} />
+            <Route path="/explore" element={<Explore />} />
           </Routes>
         </Suspense>
       </Layout>

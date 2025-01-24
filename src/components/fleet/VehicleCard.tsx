@@ -1,4 +1,5 @@
 import type { Vehicle } from '../../types';
+import ImageCarousel from '../common/ImageCarousel';
 
 interface VehicleCardProps {
   vehicle: Vehicle;
@@ -7,8 +8,8 @@ interface VehicleCardProps {
 export default function VehicleCard({ vehicle }: VehicleCardProps) {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-      <img
-        src={vehicle.image}
+      <ImageCarousel
+        images={vehicle.images}
         alt={vehicle.name}
         className="w-full h-48 object-cover"
       />
