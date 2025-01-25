@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchTouristSites } from '../services/firebase';
 import { TouristSite } from '../types';
 import { useNavigate } from 'react-router-dom';
+import ImageCarousel from './common/ImageCarousel';
 
 export default function TouristSites() {
   const [sites, setSites] = useState<TouristSite[]>([]);
@@ -46,8 +47,8 @@ export default function TouristSites() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {sites.map((site) => (
             <div key={site.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <img
-                src={site.image}
+              <ImageCarousel
+                images={site.images}
                 alt={site.name}
                 className="w-full h-48 object-cover"
               />

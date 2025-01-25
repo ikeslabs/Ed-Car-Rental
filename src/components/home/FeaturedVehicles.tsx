@@ -1,20 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { fetchVehicles } from '../../services/firebase';
-import { Vehicle } from '../../types';
-import VehicleCard from '../vehicles/VehicleCard';
+import VehicleCard from '../fleet/VehicleCard';
+import LoadingSpinner from '../common/LoadingSpinner';
+import type { Vehicle } from '../../types';
 import { Link } from 'react-router-dom';
 
 export default function FeaturedVehicles() {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadVehicles = async () => {
       try {
         const data = await fetchVehicles();
-        setVehicles(data);
-      } catch (error) {
-        console.error('Error fetching vehicles:', error);
+        setVehicles(data.slice(0, 4)); // Show only first 4 vehicles
+      } catch (err) {
+        setError('Error loading vehicles. Please try again later.');
+        console.error('Error fetching vehicles:', err);
       } finally {
         setLoading(false);
       }
@@ -23,7 +26,13 @@ export default function FeaturedVehicles() {
     loadVehicles();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (error) {
+    return (
+      <div className="text-center text-red-600 py-20">
+        {error}
+      </div>
+    );
+  }
 
   return (
     <section className="py-20 bg-white">
@@ -38,11 +47,15 @@ export default function FeaturedVehicles() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {vehicles.slice(0, 4).map((vehicle) => (
-            <VehicleCard key={vehicle.id} vehicle={vehicle} />
-          ))}
-        </div>
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {vehicles.map((vehicle) => (
+              <VehicleCard key={vehicle.id} vehicle={vehicle} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

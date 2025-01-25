@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchVehicles } from '../services/firebase';
-import VehicleCard from '../components/vehicles/VehicleCard';
+import VehicleCard from '../components/fleet/VehicleCard';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import type { Vehicle, VehicleType } from '../types';
 
@@ -83,7 +83,7 @@ export default function Fleet() {
           {loading ? (
             <LoadingSpinner />
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredVehicles.map((vehicle) => (
                 <VehicleCard key={vehicle.id} vehicle={vehicle} />
               ))}

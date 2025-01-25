@@ -2,7 +2,7 @@ export interface TouristSite {
   id: string;
   name: string;
   description: string;
-  image: string;
+  images: string[];
   location?: string;
 }
 
@@ -20,7 +20,7 @@ export interface Vehicle {
   id: string;
   name: string;
   description: string;
-  image: string;
+  images: string[];
   capacity: number;
   price: number;
   type: VehicleType;

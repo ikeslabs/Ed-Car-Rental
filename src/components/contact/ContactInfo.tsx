@@ -39,12 +39,7 @@ export default function ContactInfo() {
         </div>
       </div>
       
-      <div className="mt-8">
-        <h3 className="font-semibold mb-2">Business Hours</h3>
-        <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-        <p>Saturday: 9:00 AM - 4:00 PM</p>
-        <p>Sunday: Closed</p>
-      </div>
+      
     </div>
   );
 }
