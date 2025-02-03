@@ -139,13 +139,13 @@ const Modal = ({
       </p>
       <div className="flex justify-between">
         <a
-          href="mailto:info@edcarrental.com"
+          href="mailto:edcarrentalsgh@gmail.com"
           className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
         >
           Email
         </a>
         <a
-          href="https://wa.me/233244378724"
+          href="https://wa.me/233552904080"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"

@@ -11,15 +11,15 @@ export default function Footer() {
             <div className="space-y-3">
               <p className="flex items-center">
                 <Phone className="h-5 w-5 mr-2" />
-                <a href="tel:+233276776610" className="hover:text-blue-400">+233 27 677 6610</a>
+                <a href="tel:+233552904080" className="hover:text-blue-400">+233552904080</a>
               </p>
               <p className="flex items-center">
                 <Mail className="h-5 w-5 mr-2" />
-                <a href="mailto:info@edcarrental.com" className="hover:text-blue-400">info@edcarrental.com</a>
+                <a href="mailto:edcarrentalsgh@gmail.com" className="hover:text-blue-400">edcarrentalsgh@gmail.com</a>
               </p>
               <p className="flex items-center">
                 <MapPin className="h-5 w-5 mr-2" />
-                <span>Accra, Ghana</span>
+                <span> shiashie shell, Accra</span>
               </p>
             </div>
           </div>

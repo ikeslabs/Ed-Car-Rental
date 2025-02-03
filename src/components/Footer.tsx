@@ -11,7 +11,7 @@ export default function Footer() {
               <p className="flex items-center">
               <Phone className="h-5 w-5 mr-2" />
           <a
-            href="https://wa.me/233123456789"
+            href="https://wa.me/233552904080"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-400"

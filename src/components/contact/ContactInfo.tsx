@@ -11,8 +11,8 @@ export default function ContactInfo() {
           <div>
             <h3 className="font-semibold">Phone</h3>
             <p>
-              <a href="tel:+233244378724" className="text-blue-600 hover:text-blue-700">
-                +233244378724
+              <a href="tel:+233552904080" className="text-blue-600 hover:text-blue-700">
+                +233552904080
               </a>
             </p>
           </div>
@@ -23,8 +23,8 @@ export default function ContactInfo() {
           <div>
             <h3 className="font-semibold">Email</h3>
             <p>
-              <a href="mailto:info@edcarrental.com" className="text-blue-600 hover:text-blue-700">
-                info@edcarrental.com
+              <a href="mailto:edcarrentalsgh@gmail.com" className="text-blue-600 hover:text-blue-700">
+              edcarrentalsgh@gmail.com
               </a>
             </p>
           </div>
@@ -34,7 +34,7 @@ export default function ContactInfo() {
           <MapPin className="h-6 w-6 text-blue-600" />
           <div>
             <h3 className="font-semibold">Location</h3>
-            <p>Accra, Ghana</p>
+            <p> shiashie shell,Accra</p>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ export default function Contact() {
 
     toast.promise(
       new Promise((resolve) => {
-        window.open(`https://wa.me/233244378724?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+        window.open(`https://wa.me/233552904080?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
         setTimeout(resolve, 1000);
       }),
       {
@@ -23,7 +23,7 @@ export default function Contact() {
         success: 'Message sent successfully! We will respond via WhatsApp shortly.',
         error: 'Could not send message. Please try again.',
       }
-    );
+    ); 
   };
 
   return (
@@ -39,7 +39,7 @@ export default function Contact() {
                 <div>
                   <h3 className="font-semibold">Phone</h3>
                   <p> <a
-            href="https://wa.me/233123456789"
+            href="https://wa.me/233552904080"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-400"
@@ -50,14 +50,14 @@ export default function Contact() {
                 <Mail className="h-6 w-6 text-blue-600" />
                 <div>
                   <h3 className="font-semibold">Email</h3>
-                  <p><a href="mailto:info@edcarrental.com" className="text-blue-600 hover:text-blue-700">info@edcarrental.com</a></p>
+                  <p><a href="mailto:edcarrentalsgh@gmail.com" className="text-blue-600 hover:text-blue-700">edcarrentalsgh@gmail.com</a></p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
                 <MapPin className="h-6 w-6 text-blue-600" />
                 <div>
                   <h3 className="font-semibold">Location</h3>
-                  <p>Accra, Ghana</p>
+                  <p> shiashie shell,Accra</p>
                 </div>
               </div>
             </div>
